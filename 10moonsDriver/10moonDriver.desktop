@@ -1,0 +1,20 @@
+[Desktop Entry]
+Comment[pt_BR]=Conecte seu tablet primeiro e clique aqui para funcionar!
+Comment=Conecte seu tablet primeiro e clique aqui para funcionar!
+Exec=kdesu python /home/$USER/.10moonsDriver/10moonsDriver/driver.py
+GenericName[pt_BR]=10moonDriver Run
+GenericName=10moonDriver Run
+Icon=/usr/share/icons/hicolor/scalable/apps/10moons-T503.svg
+MimeType=Application
+Name[pt_BR]=10moonDriver
+Name=10moonDriver
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+Categories=Utility;
+Version=1.0
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
