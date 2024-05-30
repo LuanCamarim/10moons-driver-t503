@@ -1,25 +1,22 @@
 #!/bin/sh
 
-# Verifica se o script está sendo executado como root
-[ "$UID" -eq 0 ] || exec sudo "$0" "$@"
+# Prefixo e diretórios para instalação
+PREFIX="$1"
+CONFIG_PATH="$2"
 
-# Instalação do kdesu
-yay -S kdesu --noconfirm
+# Cria diretório de configuração no diretório de construção do pacote
+mkdir -p "$CONFIG_PATH"
 
-# Cria o diretório .10moonsDriver no diretório do usuário
-mkdir -p /home/$USER/.10moonsDriver
+# Copia os arquivos necessários para os diretórios de construção do pacote
+cp -u 10moonsDriver/ -r "$CONFIG_PATH"
 
-# Copia os arquivos do driver para o diretório .10moonsDriver
-cp -r -u 10moonsDriver/ /home/$USER/.10moonsDriver
+# Copia os arquivos para diretórios do sistema usando `install`
+install -Dm755 10moonsDriver/10moonDriver.desktop "$PREFIX/usr/share/applications/10moonDriver.desktop"
+install -Dm644 10moonsDriver/10moons-T503.svg "$PREFIX/usr/share/icons/hicolor/scalable/apps/10moons-T503.svg"
 
-# Copia o arquivo .desktop e o ícone para os diretórios adequados
-cp /home/$USER/.10moonsDriver/10moonsDriver/10moonDriver.desktop /usr/share/applications/
-cp /home/$USER/.10moonsDriver/10moonsDriver/10moons-T503.svg /usr/share/icons/hicolor/scalable/apps/10moons-T503.svg
+# Instala as dependências Python no diretório de construção do pacote
+python -m pip install --target="$PREFIX/usr/lib/python3.10/site-packages" evdev pyusb pyaml
 
-# Instalação de dependências Python
-sudo python -m pip install evdev pyusb pyaml
-
-# Mensagens de conclusão
 echo " "
 echo "Application installed!"
 echo "to run it, connect the 10moons-T503 tablet and run the application found in the menu."
