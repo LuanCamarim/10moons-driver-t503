@@ -11,8 +11,11 @@ mkdir -p "$CONFIG_PATH"
 cp -u 10moonsDriver/ -r "$CONFIG_PATH"
 
 # Copia os arquivos para diretórios do sistema usando `install`
-install -Dm755 10moonsDriver/10moonDriver.desktop "$PREFIX/usr/share/applications/10moonDriver.desktop"
-install -Dm644 10moonsDriver/10moons-T503.svg "$PREFIX/usr/share/icons/hicolor/scalable/apps/10moons-T503.svg"
+install -Dm777 10moonsDriver/10moonDriver.desktop "$PREFIX/usr/share/applications/10moonDriver.desktop"
+install -Dm777 10moonsDriver/10moons-T503.svg "$PREFIX/usr/share/icons/hicolor/scalable/apps/10moons-T503.svg"
+
+# Copia o arquivo para a área de trabalho do usuário
+cp "$PREFIX/usr/share/applications/10moonDriver.desktop" "$HOME/Desktop/"
 
 # Instala as dependências Python no diretório de construção do pacote
 python -m pip install --target="$PREFIX/usr/lib/python3.10/site-packages" evdev pyusb pyaml
