@@ -1,12 +1,13 @@
+#!/usr/bin/env xdg-open
 [Desktop Entry]
 Comment[pt_BR]=Conecte seu tablet primeiro e clique aqui para funcionar!
 Comment=Conecte seu tablet primeiro e clique aqui para funcionar!
-Exec=kdesu python /home/$USER/.10moonsDriver/10moonsDriver/driver.py
-GenericName[pt_BR]=10moonDriver Run
+Exec=~/.10moonsDriver/10moonsDriver/run.sh
+GenericName[pt_BR]=Habilita o 10moonsDriver
 GenericName=10moonDriver Run
 Icon=/usr/share/icons/hicolor/scalable/apps/10moons-T503.svg
 MimeType=Application
-Name[pt_BR]=10moonDriver
+Name[pt_BR]=10moonsDriver
 Name=10moonDriver
 StartupNotify=true
 Terminal=false
